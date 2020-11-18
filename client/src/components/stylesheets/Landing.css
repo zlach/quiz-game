@@ -43,25 +43,25 @@
         transform: rotate3d(0, 0, 0, 0deg);
     }
     12.5%{
-        transform: rotate3d(-2,1, 0,-25deg);
+        transform: rotate3d(-2,1, 0,-28deg);
     }
     25%{
         transform: rotate3d(0, 0, 0, 0deg);
     }
     37.5%{
-        transform: rotate3d(-1,-2, 0,-25deg);
+        transform: rotate3d(-1,-2, 0,-28deg);
     }
     50%{
         transform: rotate3d(0, 0, 0, 0deg);
     }
     62.5%{
-        transform: rotate3d(1,-2, 0,-25deg);
+        transform: rotate3d(1,-2, 0,-28deg);
     }
     75%{
         transform: rotate3d(0, 0, 0, 0deg);
     }
     87.5%{
-        transform: rotate3d(-2,-1, 0,-25deg);
+        transform: rotate3d(-2,-1, 0,-28deg);
     }
 }
 
