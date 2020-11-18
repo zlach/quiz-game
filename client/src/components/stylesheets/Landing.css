@@ -1,0 +1,38 @@
+.landing-comp{
+    background-color: #130c25;
+    height: 100vh;
+}
+
+
+
+.action-container{
+    background-color: white;
+    border-radius: 10px;
+    width: 350px;
+    height: 300px;
+    box-shadow: 0px 0px 10px black;
+}
+
+.manager{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+}
+
+/*
+
+transform: rotate3d(-2,1, 0,-50deg);
+
+.magic-container{
+    width: 380px;
+    height: 330px;
+    border: 5px solid red;
+    border-radius: 10px;
+    position: absolute;
+    animation: zanimate 10s;
+    animation: zanimate2 10s;
+}
+
+
+*/
