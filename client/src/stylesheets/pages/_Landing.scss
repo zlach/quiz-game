@@ -4,33 +4,30 @@
     color: $primary-color;
 
     .content-container{
-        border-radius: 50%;
         width: 330px;
-        height: 330px;
         background-color: white;
+        transition: height .8s linear, border-radius .8s linear;
         .content-layover{
             z-index: 1;
-            border-radius: 50%;
             width: 330px;
-            height: 330px;
             position: relative;
             animation: coloranimation 15s infinite;
+            transition: height .8s linear, border-radius .8s linear;
         }
     }
 
     .magic-container{
         width: 350px;
-        height: 350px;
         border: 5px solid $secondary-color;
-        border-radius: 50%;
         position: absolute;
         animation: magic 15s infinite linear;
+        transition: height .8s linear, border-radius .8s linear;
     }
 
     .manager{
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
+        // position: absolute;
+        // bottom: 20px;
+        // left: 20px;
         color: white;
     
         .here{
@@ -43,6 +40,13 @@
             text-decoration: none;
             cursor: pointer;
         }
+    }
+    .zach{
+        position: absolute;
+        font-size: 12px;
+        bottom: 20px;
+        left: 20px;
+        color: white;
     }
 }
 
