@@ -1,12 +1,12 @@
-import '../stylesheets/Landing.css';
+import {Link} from 'react-router-dom';
 
 const Landing = () => {
     return (
-        <div className="landing-comp d-flex align-items-center">
+        <section className="landing d-flex align-items-center">
             <div className="container">
                 <div className="row align-items-center justify-content-center">
-                    <div className="action-container">
-                        <div className="zaction-container d-flex align-items-center justify-content-center">
+                    <div className="content-container">
+                        <div className="content-layover d-flex align-items-center justify-content-center">
                             <form>
                             <label>
                                 <span>Game Code:</span>
@@ -21,8 +21,8 @@ const Landing = () => {
                     <div className="magic-container"></div>
                 </div>
             </div>
-            <div className="manager">click here to manage</div>
-        </div>
+            <div className="manager">click <Link to='/manage' className="here">here</Link> to manage a game</div>
+        </section>
     )
 }
 
