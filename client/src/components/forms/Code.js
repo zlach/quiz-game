@@ -4,7 +4,7 @@ const Code = () => {
             <label>
                 <span>Game Code:</span>
                 <br />
-                <input type="text" name="name" />
+                <input type="text" name="code" />
             </label>
             <br />
             <input type="submit" value="Submit" />
