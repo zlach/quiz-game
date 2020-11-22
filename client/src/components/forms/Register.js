@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { setAlert, removeAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
 import Alert from '../alerts/Alert';
-import { STATES } from 'mongoose';
 
 const Register = props => {
     const [formData, setFormData] = useState({
