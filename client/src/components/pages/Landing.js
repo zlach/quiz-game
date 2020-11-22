@@ -27,8 +27,7 @@ const Landing = () => {
         <section className="landing">
             <div className="container">
                 <div className="row alert-container justify-content-center align-items-end">
-                    <Alert/>
-                    {/* <div className="alert-animation"></div> */}
+                    {/* <Alert/> */}
                 </div>
             </div>
             <div className="container">
