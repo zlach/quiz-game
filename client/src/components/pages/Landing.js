@@ -3,6 +3,8 @@ import Code from '../forms/Code';
 import Login from '../forms/Login';
 import Register from '../forms/Register';
 import { useState } from 'react';
+import Alert from '../alerts/Alert';
+
 
 const Landing = () => {
     const [isCode, setIsCode] = useState(true);
@@ -22,7 +24,13 @@ const Landing = () => {
     }
 
     return (
-        <section className="landing d-flex align-items-center">
+        <section className="landing">
+            <div className="container">
+                <div className="row alert-container justify-content-center align-items-end">
+                    <Alert/>
+                    {/* <div className="alert-animation"></div> */}
+                </div>
+            </div>
             <div className="container">
                 <div className="row align-items-center justify-content-center">
                     <div className="content-container" style={{ height: isCode ? '330px' : '430px', borderRadius: isCode ? '50%' : '20px' }}>

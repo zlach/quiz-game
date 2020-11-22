@@ -4,6 +4,22 @@
     color: $primary-color;
     min-height: 500px;
 
+    .alert-container{
+        height: 150px;
+        margin-bottom: 20px;
+        .red-alert{
+            color: white;
+            font-size: 20px;
+        }
+        .alert-animation{
+            position: absolute;
+            width: 0px;
+            height: 40px;
+            animation: fadeText .8s linear 1;
+            background-color: $primary-color;
+        }
+    }
+
     .content-container{
         width: 330px;
         background-color: white;
@@ -113,5 +129,15 @@
     }
 }
 
-
+@keyframes fadeText {
+    0%{
+        width: 300px;
+    }
+    50%{
+        width: 150px;
+    }
+    100%{
+        width: 0px;
+    }
+}
 

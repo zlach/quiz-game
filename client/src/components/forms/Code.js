@@ -2,12 +2,10 @@ const Code = () => {
     return (
         <form>
             <label>
-                <span>Game Code:</span>
-                <br />
-                <input type="text" name="code" />
+                <input className="form-control" type="text" name="code" placeholder="Enter code" />
             </label>
             <br />
-            <input type="submit" value="Submit" />
+            <input className="btn custom-submit" type="submit" value="Submit" />
         </form>
     )
 }
