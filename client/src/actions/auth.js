@@ -49,7 +49,7 @@ export const register = ({ code, email, password }) => async dispatch => {
     } catch (err) {
         const errType = err.response.data.type;
         if (errType) {
-            dispatch(setAlert(errType, 'red-alert'))
+            dispatch(setAlert(errType))
         }
         dispatch({
             type: REGISTER_FAIL
@@ -77,7 +77,7 @@ export const login = (email, password) => async dispatch => {
     } catch (err) {
         const errType = err.response.data.type;
         if (errType) {
-            dispatch(setAlert(errType, 'red-alert'))
+            dispatch(setAlert(errType))
         }
         dispatch({
             type: LOGIN_FAIL

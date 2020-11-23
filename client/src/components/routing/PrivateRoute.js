@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+// todo: clean this up somehow
 const PrivateRoute = ({ component: Component, auth: { isAuthenticated, loading }, ...rest }) => (
     <Route {...rest} render={
-        props => loading ? (
-            <div></div>//todo: style spinner or fix so that this isn't necessary
-        ) : isAuthenticated ? (
-            <Component {...props} />
-        ) : (<Redirect to="/" />)
+        props => loading && !localStorage.token ? (<div>404</div>)
+            : loading ? (<div></div>)
+                : isAuthenticated ? (<Component {...props} />)
+                    : (<Redirect to="/" />)
     } />
 )
 

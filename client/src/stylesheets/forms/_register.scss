@@ -4,4 +4,11 @@
     .form-item-height{
         height: 65px;
     }
+    .custom-submit{
+        background-color: $primary-color;
+        color: white;
+    }
+    .custom-submit:hover{
+        color: white;
+    }
 }
