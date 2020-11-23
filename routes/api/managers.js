@@ -8,27 +8,19 @@ const { check, validationResult } = require('express-validator');
 const Manager = require('../../models/Manager');
 
 // register manager
-router.post('/', [
-    check('name', 'Name is Required').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Please enter a password of 6 or more characters').isLength({ min: 6 })
-], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({
-            errors: errors.array()
-        });
-    }
+router.post('/', async (req, res) => {
+    const { code, email, password } = req.body;
 
-    const { name, email, password } = req.body;
+    if (code !== config.get('secretCode')){
+        return res.status(400).json({type: 'code'});
+    }
     try {
         let manager = await Manager.findOne({ email });
         if (manager) {
-            return res.status(400).json({ errors: [{ msg: "Please try another email address" }] })
+            return res.status(400).json({ type: 'email' })
         }
 
         manager = new Manager({
-            name,
             email,
             password
         });
@@ -54,7 +46,7 @@ router.post('/', [
         );
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server error')
+        res.status(500).send('Server error'); // todo: change format
     }
 });
 

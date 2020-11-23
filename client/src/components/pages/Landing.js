@@ -3,7 +3,6 @@ import Code from '../forms/Code';
 import Login from '../forms/Login';
 import Register from '../forms/Register';
 import { useState } from 'react';
-import Alert from '../alerts/Alert';
 
 
 const Landing = () => {
@@ -27,7 +26,7 @@ const Landing = () => {
         <section className="landing">
             <div className="container">
                 <div className="row alert-container justify-content-center align-items-end">
-                    {/* <Alert/> */}
+
                 </div>
             </div>
             <div className="container">
