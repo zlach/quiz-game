@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { register } from '../../actions/auth';
+import { Redirect } from 'react-router-dom';
 import { removeAlert } from '../../actions/alert';
 
 
@@ -35,6 +36,10 @@ const Register = props => {
         props.back();
     }
 
+    if (props.isAuthenticated) {
+        return <Redirect to="home" />
+    }
+
     return (
         <div className="register-form">
             <svg onClick={() => onClick()} width="3em" height="3em" viewBox="0 0 16 16" className="bi bi-arrow-left-short" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -42,13 +47,13 @@ const Register = props => {
             </svg>
             <form className="pt-2" onSubmit={e => onSubmit(e)}>
                 <div className="form-item-height">
-                    <input className={"form-control " + (props.error.errType === "code" ? "is-invalid" : "")} required={true} type="password" name="code" value={code} onChange={e => {onChange(e); props.removeAlert()}} placeholder="Secret Code" />
+                    <input className={"form-control " + (props.error.errType === "code" ? "is-invalid" : "")} required={true} type="password" name="code" value={code} onChange={e => { onChange(e); props.removeAlert() }} placeholder="Secret Code" />
                     <div className="invalid-feedback">
                         Incorrect code
                     </div>
                 </div>
                 <div className="form-item-height">
-                    <input className={"form-control " + (props.error.errType === "email" ? "is-invalid" : "")} required={true} type="email" name="email" value={email} onChange={e => {onChange(e); props.removeAlert()}} placeholder="Email" />
+                    <input className={"form-control " + (props.error.errType === "email" ? "is-invalid" : "")} required={true} type="email" name="email" value={email} onChange={e => { onChange(e); props.removeAlert() }} placeholder="Email" />
                     <div className="invalid-feedback">
                         Account already exists
                     </div>
@@ -72,10 +77,12 @@ Register.propTypes = {
     error: PropTypes.object.isRequired,
     register: PropTypes.func.isRequired,
     removeAlert: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = state => ({
-    error: state.alert
+    error: state.alert,
+    isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, { register, removeAlert })(Register);
