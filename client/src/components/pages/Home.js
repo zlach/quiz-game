@@ -1,13 +1,26 @@
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
-import {getGames} from '../../actions/home';
+import { getGames } from '../../actions/home';
+import moment from 'moment';
 
-const Home = (props) =>
-    <div>
-        {console.log(props.home)}
-        <button onClick={props.logout}>logout</button>
-    </div>
+
+const Home = ({ getGames, logout, home }) => {
+    useEffect(() => {
+        getGames();
+    }, [getGames])
+    return (
+        <div>
+            <nav class="navbar navbar-light bg-light">
+                <button onClick={logout} className="btn ml-auto">logout</button>
+            </nav>
+            {home.games.map((game, i) => {
+                return <button className="d-block btn" key={i}>{game.gameName}{" "}{moment(game.date).format('MMMM Do YYYY, h:mm:ss a')}</button>;
+            })}
+        </div>
+    )
+}
 
 Home.prototype = {
     logout: PropTypes.func.isRequired,

@@ -7,7 +7,7 @@ const Manager = require('../../models/Manager');
 
 router.get('/', auth, async (req, res) => {
     try {
-        const games = await Game.find({ manager: req.manager.id });
+        const games = await Game.find({ manager: req.manager.id }).sort({ date: -1 });// reverse order
         // if (games.length === 0) {
         //     return res.status(400).json({ type: "empty" });
         // }
@@ -18,9 +18,9 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-router.post('/', auth, async (req, res) =>{
+router.post('/', auth, async (req, res) => {
     try {
-        const newGame = new Game({...req.body, manager: req.manager.id});
+        const newGame = new Game({ ...req.body, manager: req.manager.id });
         newGame.save();
         // const newGame = Game.create({...req.body, manager: req.manager.id});
         res.json(newGame);

@@ -15,7 +15,7 @@ export default function(state = initialState, action){
         case GET_GAMES:
             return {
                 ...state,
-                profile: payload,
+                games: payload,
                 loading: false
             };
         case GAMES_ERROR:
