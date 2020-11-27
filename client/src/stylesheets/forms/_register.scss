@@ -1,6 +1,7 @@
 .register-form{
     height: 360px;
     width: 250px;
+    animation: fadein 1s;
     .form-item-height{
         height: 65px;
     }
@@ -11,4 +12,10 @@
     .custom-submit:hover{
         color: white;
     }
+}
+
+@keyframes fadein {
+    0% { opacity: 0; }
+    25% {opacity: 0}
+    100%  { opacity: 1; }
 }
