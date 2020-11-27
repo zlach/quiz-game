@@ -10,6 +10,7 @@ app.use(express.json({extended: false}));
 
 app.get('/', (req, res) => res.send('API Running'));
 
+app.use('/api/games', require('./routes/api/games'));
 app.use('/api/managers', require('./routes/api/managers'));
 app.use('/api/auth', require('./routes/api/auth'));
 
