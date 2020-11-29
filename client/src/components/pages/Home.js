@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { getGames } from '../../actions/home';
 import moment from 'moment';
-import Rounds from '../forms/Rounds';
+import SetUp from '../forms/SetUp';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
@@ -32,10 +32,25 @@ const Home = ({ getGames, logout, home }) => {
             <div className="container">
                 <div className="row flex-column">
                     {editMode ?
-                        <div style={{ border: '2px solid #e7e6e9', color: '#130c25' }} className="py-3 mt-3 rounded d-flex justify-content-center">
-                            <Rounds/>
+                        <div className="py-3 mt-3 rounded d-flex justify-content-center new-game-display">
+                            {/* <button className="cancel-button btn"></button> */}
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1em"
+                                height="1em"
+                                fill="currentColor"
+                                className="cancel-button bi bi-x-circle-fill"
+                                viewBox="0 0 16 16"
+                                onClick={() => setEditMode(false)}
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M16 8A8 8 0 110 8a8 8 0 0116 0zM5.354 4.646a.5.5 0 10-.708.708L7.293 8l-2.647 2.646a.5.5 0 00.708.708L8 8.707l2.646 2.647a.5.5 0 00.708-.708L8.707 8l2.647-2.646a.5.5 0 00-.708-.708L8 7.293 5.354 4.646z"
+                                ></path>
+                            </svg>
+                            <SetUp />
                         </div> :
-                        <button style={{ border: '2px solid #e7e6e9', color: '#130c25' }} className="d-block btn py-3 mt-3" onClick={() => setEditMode(true)}>
+                        <button className="d-block btn py-3 mt-3 new-game-button" onClick={() => setEditMode(true)}>
                             <strong>New Game</strong>
                         </button>}
                 </div>

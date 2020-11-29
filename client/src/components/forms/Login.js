@@ -51,7 +51,7 @@ const Login = (props) => {
 
 Login.propTypes = {
     error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
     removeAlert: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
 }

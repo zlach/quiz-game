@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            { expiresIn: 999999 },
+            { expiresIn: "10h" },
             (err, token) => {
                 if (err) throw err;
                 res.json({ token });

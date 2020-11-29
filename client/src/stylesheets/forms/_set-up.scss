@@ -1,0 +1,16 @@
+.set-up-form{
+    .custom-button{
+        background-color: $primary-color;
+        color: white;
+    }
+    .custom-button:hover{
+        color: white;
+    }
+    .custom-button-secondary{
+        background-color: $primary-gray;
+        color: $primary-color;
+    }
+    .custom-button-secondary:hover{
+        color: $primary-color;
+    }
+}
