@@ -29,7 +29,7 @@ const QuestionsStep = (props) => {
     }
 
     const onChange = (e) => {
-        props.update(props.index, props.numValue, values.partsValue);
+        props.update(props.index, props.numValue, values.pointsValue);
     }
     return (
         <>
@@ -42,7 +42,7 @@ const QuestionsStep = (props) => {
             </FormGroup>
             <FormGroup>
                 <Label for="pointsSelect">Default Points Per Question?</Label>
-                <Input type="select" name="points" id="pointsSelect" value={props.partsValue} onChange={(e) => onChange(e)}>
+                <Input type="select" name="points" id="pointsSelect" value={props.pointsValue} onChange={(e) => onChange(e)}>
                     {getPointsOptions()}
                 </Input>
             </FormGroup>

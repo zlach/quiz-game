@@ -35,7 +35,6 @@ const Rounds = (props) => {
 
   // this gets passed to question selection forms
   const updateQuestions = (i, num, points) => {
-    console.log(i, num, points);
     setFormData((state) => {
       let temp = []
       for (let j = 0; j < num; j++) {
@@ -57,7 +56,7 @@ const Rounds = (props) => {
       // console.log('------');
       // console.log(formData[`round${i}`];
       // console.log('------');
-      questions.push(<QuestionsStep key={i} update={updateQuestions} numValue={formData[`round${i}`] ? formData[`round${i}`][0] : undefined} partsValue={formData[`round${i}`] ? formData[`round${i}`][1] : undefined} stepCount={stepCount} index={i} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1); }} />);
+      questions.push(<QuestionsStep key={i} update={updateQuestions} numValue={formData[`round${i}`] ? formData[`round${i}`][0] : undefined} pointsValue={formData[`round${i}`] ? formData[`round${i}`][1] : undefined} stepCount={stepCount} index={i} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1); }} />);
     }
     return questions;
   }
