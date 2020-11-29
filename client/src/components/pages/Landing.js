@@ -23,10 +23,10 @@ const Landing = () => {
     }
 
     return (
-        <section className="landing">
+        <section className="landing-page">
             <div className="container">
                 <div className="row alert-container justify-content-center align-items-end">
-
+                    {/*todo*/}
                 </div>
             </div>
             <div className="container">

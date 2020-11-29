@@ -1,7 +1,9 @@
 $primary-color: #130c25;
 $secondary-color: #ff5349;
+$primary-gray: #e7e6e9;
 
 
 @import "./pages/Landing";
 @import "./forms/register";
 @import "./forms/login";
+@import "./pages/Home";
