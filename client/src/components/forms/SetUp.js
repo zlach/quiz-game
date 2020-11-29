@@ -8,7 +8,11 @@ const Rounds = (props) => {
   const [formData, setFormData] = useState({
     gameName: '',
     rounds: [[]]
-  })
+  });
+  const [questionData, setQuestionData] = useState({
+    number0: 1,
+    points0: 1
+  });
   const [stepCount, setStepCount] = useState(1)
   const onSubmit = e => {
     e.preventDefault();
@@ -33,18 +37,24 @@ const Rounds = (props) => {
     setFormData({ ...formData, rounds: arr })
   }
 
-  // this gets passed to question selection forms
-  const updateQuestions = (i, num, points) => {
+  // these gets passed to question selection forms
+  const updateQuestions = (e, i) => {
+    console.log('value', e.target.value, 'name', e.target.name, 'index', i);
+    setQuestionData({ ...questionData, [`${e.target.name}${i}`]: e.target.value });
+  }
+
+  const submitQuestions = (i) => {
     setFormData((state) => {
       let temp = []
-      for (let j = 0; j < num; j++) {
+      for (let j = 0; j < questionData[`number${i}`]; j++) {
         temp.push({
           parts: 1,
-          pointsPerPart: points
+          pointsPerPart: parseInt(questionData[`points${i}`])
         })
       };
+      setQuestionData({ [`number${i+1}`]: 1, [`points${i+1}`]: 1 });
       state.rounds[i] = temp;
-      return {...state, [`round${i}`]: [num, points] };
+      return state;
     });
   }
 
@@ -53,10 +63,7 @@ const Rounds = (props) => {
   const questionsStep = () => {
     let questions = [];
     for (let i = 0; i < formData.rounds.length; i++) {
-      // console.log('------');
-      // console.log(formData[`round${i}`];
-      // console.log('------');
-      questions.push(<QuestionsStep key={i} update={updateQuestions} numValue={formData[`round${i}`] ? formData[`round${i}`][0] : undefined} pointsValue={formData[`round${i}`] ? formData[`round${i}`][1] : undefined} stepCount={stepCount} index={i} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1); }} />);
+      questions.push(<QuestionsStep key={i} submit={submitQuestions} update={updateQuestions} numValue={questionData[`number${i}`]} pointsValue={questionData[`points${i}`]} stepCount={stepCount} index={i} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1); }} />);
     }
     return questions;
   }
