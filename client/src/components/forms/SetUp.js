@@ -52,7 +52,9 @@ const Rounds = (props) => {
           pointsPerPart: parseInt(questionData[`points${i}`])
         })
       };
-      setQuestionData({ [`number${i+1}`]: 1, [`points${i+1}`]: 1 });
+      if (!(`number${i + 1}` in questionData)) {
+        setQuestionData({ ...questionData, [`number${i + 1}`]: 1, [`points${i + 1}`]: 1 });
+      }
       state.rounds[i] = temp;
       return state;
     });
