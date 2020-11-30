@@ -3,7 +3,7 @@ import {
     GET_GAMES,
     GAMES_ERROR
 } from '../actions/types';
-import { setAlert } from './alert';
+// import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
 
 // Load user

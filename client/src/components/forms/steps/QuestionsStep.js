@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 
 const QuestionsStep = (props) => {

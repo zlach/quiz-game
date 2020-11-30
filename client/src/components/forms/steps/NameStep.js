@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Input } from 'reactstrap';
 
 const NameStep = (props) => {
     const [blankAlert, setBlankAlert] = useState('');
