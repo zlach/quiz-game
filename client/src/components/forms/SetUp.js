@@ -4,6 +4,7 @@ import NameStep from './steps/NameStep';
 import RoundsStep from './steps/RoundsStep';
 import QuestionsStep from './steps/QuestionsStep';
 import PartsStep from './steps/PartsStep';
+var _ = require('lodash');
 
 const SetUp = (props) => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const SetUp = (props) => {
   const [stepCount, setStepCount] = useState(1)
   const onSubmit = e => {
     e.preventDefault();
+    console.log(formData.rounds);
   }
 
   // this gets passed to name form
@@ -60,8 +62,9 @@ const SetUp = (props) => {
   // goes to parts step
   const handlePartsSelect = (e, round, question) => {
     setFormData((state) => {
-      state.rounds[round][question][e.target.name] = parseInt(e.target.value);
-      return state;
+      let deep = _.cloneDeep(state);
+      deep.rounds[round][question][e.target.name] = parseInt(e.target.value);
+      return deep;
     });
   }
 
@@ -80,7 +83,7 @@ const SetUp = (props) => {
       <RoundsStep handleSelect={handleSelect} stepCount={stepCount} selectValue={formData.rounds.length} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       {questionsStep()}
       <PartsStep stepCount={stepCount} rounds={formData.rounds} update={handlePartsSelect} />
-      {/* <button>submit</button> */}
+      <button>submit</button>
     </Form>
   );
 }
