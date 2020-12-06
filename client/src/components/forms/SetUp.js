@@ -5,7 +5,7 @@ import RoundsStep from './steps/RoundsStep';
 import QuestionsStep from './steps/QuestionsStep';
 import PartsStep from './steps/PartsStep';
 
-const Rounds = (props) => {
+const SetUp = (props) => {
   const [formData, setFormData] = useState({
     gameName: '',
     rounds: [[]]
@@ -57,6 +57,14 @@ const Rounds = (props) => {
     });
   }
 
+  // goes to parts step
+  const handlePartsSelect = (e, round, question) => {
+    setFormData((state) => {
+      state.rounds[round][question][e.target.name] = parseInt(e.target.value);
+      return state;
+    });
+  }
+
 
   // dynamically create questions forms depending on number of rounds
   const questionsStep = () => {
@@ -71,10 +79,10 @@ const Rounds = (props) => {
       <NameStep handleName={handleName} stepCount={stepCount} gameName={formData.gameName} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       <RoundsStep handleSelect={handleSelect} stepCount={stepCount} selectValue={formData.rounds.length} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       {questionsStep()}
-      <PartsStep stepCount={stepCount} formData={formData}/>
+      <PartsStep stepCount={stepCount} rounds={formData.rounds} update={handlePartsSelect} />
       {/* <button>submit</button> */}
     </Form>
   );
 }
 
-export default Rounds;
+export default SetUp;
