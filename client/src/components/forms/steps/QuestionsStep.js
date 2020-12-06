@@ -27,7 +27,7 @@ const QuestionsStep = (props) => {
         props.submit(props.index);
         props.onNext();
     }
-    console.log(props.pointsValue);
+    
     return (
         <>
             <FormGroup>

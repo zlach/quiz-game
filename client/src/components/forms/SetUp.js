@@ -3,6 +3,7 @@ import { Form } from 'reactstrap';
 import NameStep from './steps/NameStep';
 import RoundsStep from './steps/RoundsStep';
 import QuestionsStep from './steps/QuestionsStep';
+import PartsStep from './steps/PartsStep';
 
 const Rounds = (props) => {
   const [formData, setFormData] = useState({
@@ -16,9 +17,6 @@ const Rounds = (props) => {
   const [stepCount, setStepCount] = useState(1)
   const onSubmit = e => {
     e.preventDefault();
-    console.log('submitttteddd');
-    console.log(formData.gameName);
-    console.log(formData.rounds)
   }
 
   // this gets passed to name form
@@ -39,7 +37,6 @@ const Rounds = (props) => {
 
   // these gets passed to question selection forms
   const updateQuestions = (e, i) => {
-    console.log('value', e.target.value, 'name', e.target.name, 'index', i);
     setQuestionData({ ...questionData, [`${e.target.name}${i}`]: e.target.value });
   }
 
@@ -74,7 +71,8 @@ const Rounds = (props) => {
       <NameStep handleName={handleName} stepCount={stepCount} gameName={formData.gameName} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       <RoundsStep handleSelect={handleSelect} stepCount={stepCount} selectValue={formData.rounds.length} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       {questionsStep()}
-      <button>submit</button>
+      <PartsStep stepCount={stepCount} formData={formData}/>
+      {/* <button>submit</button> */}
     </Form>
   );
 }
