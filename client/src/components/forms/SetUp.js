@@ -17,11 +17,7 @@ const SetUp = (props) => {
     number0: 1,
     points0: 1
   });
-  const [stepCount, setStepCount] = useState(1)
-  const onSubmit = e => {
-    e.preventDefault();
-    props.submit(formData);
-  }
+  const [stepCount, setStepCount] = useState(1);
 
   // this gets passed to name form
   const handleName = (event) => {
@@ -80,12 +76,12 @@ const SetUp = (props) => {
   }
 
   return (
-    <Form onSubmit={e => onSubmit(e)} className="set-up-form">
+    <Form onSubmit={e => e.preventDefault()} className="set-up-form">
       <NameStep handleName={handleName} stepCount={stepCount} gameName={formData.gameName} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       <RoundsStep handleSelect={handleSelect} stepCount={stepCount} selectValue={formData.rounds.length} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       {questionsStep()}
       <PartsStep stepCount={stepCount} rounds={formData.rounds} update={handlePartsSelect} />
-      {stepCount !== (formData.rounds.length + 3) ? null : <button className="btn custom-button">submit</button>}
+      {stepCount !== (formData.rounds.length + 3) ? null : <button className="btn custom-button" onClick={()=>props.submit(formData)}>submit</button>}
     </Form>
   );
 }
