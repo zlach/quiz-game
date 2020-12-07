@@ -23,3 +23,22 @@ export const getGames = () => async dispatch => {
         }
     }
 }
+
+export const postNewGame = (formData) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    let body = JSON.stringify(formData);
+    try {
+        const res = await axios.post('/api/games', body, config);
+        dispatch({
+            type: GET_GAMES,
+            payload: res.data
+        });
+    } catch (err) {
+        console.error(err.message)
+    }
+
+}

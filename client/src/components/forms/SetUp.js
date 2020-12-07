@@ -1,9 +1,11 @@
 import { useState } from 'react';
+
 import { Form } from 'reactstrap';
 import NameStep from './steps/NameStep';
 import RoundsStep from './steps/RoundsStep';
 import QuestionsStep from './steps/QuestionsStep';
 import PartsStep from './steps/PartsStep';
+
 var _ = require('lodash');
 
 const SetUp = (props) => {
@@ -18,7 +20,7 @@ const SetUp = (props) => {
   const [stepCount, setStepCount] = useState(1)
   const onSubmit = e => {
     e.preventDefault();
-    console.log(formData.rounds);
+    props.submit(formData);
   }
 
   // this gets passed to name form
@@ -68,7 +70,6 @@ const SetUp = (props) => {
     });
   }
 
-
   // dynamically create questions forms depending on number of rounds
   const questionsStep = () => {
     let questions = [];
@@ -77,15 +78,17 @@ const SetUp = (props) => {
     }
     return questions;
   }
+
   return (
     <Form onSubmit={e => onSubmit(e)} className="set-up-form">
       <NameStep handleName={handleName} stepCount={stepCount} gameName={formData.gameName} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       <RoundsStep handleSelect={handleSelect} stepCount={stepCount} selectValue={formData.rounds.length} onPrev={() => { setStepCount(stepCount - 1) }} onNext={() => { setStepCount(stepCount + 1) }} />
       {questionsStep()}
       <PartsStep stepCount={stepCount} rounds={formData.rounds} update={handlePartsSelect} />
-      <button>submit</button>
+      {stepCount !== (formData.rounds.length + 3) ? null : <button className="btn custom-button">submit</button>}
     </Form>
   );
 }
+
 
 export default SetUp;

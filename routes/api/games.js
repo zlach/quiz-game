@@ -21,9 +21,10 @@ router.get('/', auth, async (req, res) => {
 router.post('/', auth, async (req, res) => {
     try {
         const newGame = new Game({ ...req.body, manager: req.manager.id });
-        newGame.save();
+        await newGame.save();
+        const games = await Game.find({ manager: req.manager.id }).sort({ date: -1 });// reverse order
         // const newGame = Game.create({...req.body, manager: req.manager.id});
-        res.json(newGame);
+        res.send(games);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error'); // todo

@@ -3,18 +3,24 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 import { getGames } from '../../actions/home';
+import { postNewGame } from '../../actions/home';
 import moment from 'moment';
 import SetUp from '../forms/SetUp';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
-const Home = ({ getGames, logout, home }) => {
+const Home = ({ getGames, logout, home, postNewGame }) => {
     useEffect(() => {
         getGames();
     }, [getGames])
 
     const [dropdownOpen, setOpen] = useState(false);
     const [editMode, setEditMode] = useState(false);
+
+    const submit = (formData) => {
+        postNewGame(formData);
+        setEditMode(false);
+    };
 
     const toggle = () => setOpen(!dropdownOpen);
     return (
@@ -48,7 +54,7 @@ const Home = ({ getGames, logout, home }) => {
                                     d="M16 8A8 8 0 110 8a8 8 0 0116 0zM5.354 4.646a.5.5 0 10-.708.708L7.293 8l-2.647 2.646a.5.5 0 00.708.708L8 8.707l2.646 2.647a.5.5 0 00.708-.708L8.707 8l2.647-2.646a.5.5 0 00-.708-.708L8 7.293 5.354 4.646z"
                                 ></path>
                             </svg>
-                            <SetUp />
+                            <SetUp submit={submit} />
                         </div> :
                         <button className="d-block btn py-3 mt-3 new-game-button" onClick={() => setEditMode(true)}>
                             <strong>New Game</strong>
@@ -68,7 +74,8 @@ Home.prototype = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     getGames: PropTypes.func.isRequired,
-    home: PropTypes.object
+    home: PropTypes.object,
+    postNewGame: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -76,4 +83,4 @@ const mapStateToProps = state => ({
     home: state.home
 })
 
-export default connect(mapStateToProps, { getGames, logout })(Home);
+export default connect(mapStateToProps, { getGames, logout, postNewGame })(Home);

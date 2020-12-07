@@ -5,7 +5,7 @@ const PartsStep = (props) => {
     if (props.stepCount !== (props.rounds.length + 3)) {
         return null;
     }
-    console.log('fuck this');
+    
     return (
         <>
             {props.rounds.map((round, index) =>
